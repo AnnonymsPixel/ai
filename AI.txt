@@ -1,0 +1,31 @@
+AI
+import openai
+import os
+# get your api key
+openai.api_key = 'your-api-key-here'
+def chat_with_loki1():
+ print("Hello! I am a chatbot powered by loki1. Type 'exit' to end the
+conversation.")
+ while True:
+ try:
+ user_input = input("You: ")
+ if user_input.lower() == 'exit':
+ print("Goodbye!")
+ break
+ # Send user input to Bot
+ response = openai.Completion.create(
+ engine="text-davinci-003",
+ prompt=user_input,
+ max_tokens=150,
+ n=1,
+ stop=None,
+ temperature=0.7,
+ )
+ # Get the Bot response
+ bot_response = response.choices[0].text.strip()
+ print(f"Bot: {bot_response}")
+ except (KeyboardInterrupt, EOFError, SystemExit):
+ break
+# Start chatting with Bot
+if _name_ == "_main_":
+ chat_with_loki1()
